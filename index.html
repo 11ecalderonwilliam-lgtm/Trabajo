@@ -9,10 +9,11 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(180deg, #ffe6f0, #fff);
+    background: linear-gradient(180deg, #ffeaf4, #fff);
     overflow: hidden;
 }
 
+/* FONDO TIERNO */
 .flower-bg {
     position: fixed;
     inset: 0;
@@ -20,19 +21,37 @@ body {
     pointer-events: none;
 }
 
+/* FLORES */
 .flower {
     position: absolute;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
+    opacity: 0.65;
     animation: float linear infinite;
-    opacity: 0.6;
+}
+
+/* CORAZONES */
+.heart-bg {
+    position: absolute;
+    font-size: 1.4rem;
+    opacity: 0.4;
+    animation: floatHeart linear infinite;
 }
 
 @keyframes float {
     from {
-        transform: translateY(100vh) rotate(0deg);
+        transform: translateY(110vh) rotate(0deg);
     }
     to {
-        transform: translateY(-10vh) rotate(360deg);
+        transform: translateY(-15vh) rotate(360deg);
+    }
+}
+
+@keyframes floatHeart {
+    from {
+        transform: translateY(110vh) scale(0.8);
+    }
+    to {
+        transform: translateY(-15vh) scale(1.2);
     }
 }
 
@@ -46,54 +65,54 @@ body {
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    max-width: 600px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 45px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    max-width: 650px;
     width: 100%;
 }
 
 h1 {
     color: #d63384;
-    font-size: 2.5em;
+    font-size: 2.6em;
 }
 
 p {
-    font-size: 1.2em;
+    font-size: 1.25em;
     color: #555;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .buttons {
-    margin-top: 30px;
+    margin-top: 35px;
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 30px;
 }
 
 button {
     font-size: 1.2em;
-    padding: 12px 35px;
+    padding: 14px 38px;
     border: none;
-    border-radius: 30px;
+    border-radius: 40px;
 }
 
 #yes {
-    background: #ff69b4;
+    background: #ff8fc7;
     color: white;
     cursor: pointer;
     transition: 0.3s;
 }
 
 #yes:hover {
-    background: #ff85c1;
-    transform: scale(1.1);
+    background: #ffaad7;
+    transform: scale(1.12);
 }
 
 #no {
-    background: #ccc;
-    color: #777;
+    background: #ddd;
+    color: #888;
     cursor: not-allowed;
 }
 
@@ -101,15 +120,15 @@ button {
     display: none;
 }
 
-.heart {
-    font-size: 3em;
-    animation: heartbeat 1.5s infinite;
-    margin: 15px 0;
+.heart-main {
+    font-size: 3.5em;
+    animation: heartbeat 1.4s infinite;
+    margin: 20px 0;
 }
 
 @keyframes heartbeat {
     0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
+    50% { transform: scale(1.25); }
     100% { transform: scale(1); }
 }
 </style>
@@ -117,24 +136,42 @@ button {
 
 <body>
 
-<!-- FONDO DE FLORES -->
+<!-- MUCHAS FLORES Y CORAZONES -->
 <div class="flower-bg">
-    <span class="flower" style="left:5%; animation-duration:20s">🌷</span>
-    <span class="flower" style="left:15%; animation-duration:26s">🌸</span>
-    <span class="flower" style="left:25%; animation-duration:22s">🌹</span>
-    <span class="flower" style="left:35%; animation-duration:28s">💐</span>
-    <span class="flower" style="left:45%; animation-duration:24s">🌼</span>
-    <span class="flower" style="left:55%; animation-duration:30s">🌷</span>
-    <span class="flower" style="left:65%; animation-duration:23s">🌸</span>
-    <span class="flower" style="left:75%; animation-duration:27s">🌹</span>
-    <span class="flower" style="left:85%; animation-duration:21s">💐</span>
+    <!-- FLORES -->
+    <!-- Tulipanes, rosas, lirios, gypsophila, campánulas -->
+    <script>
+        const flowers = ["🌷","🌸","🌹","💐","🌼","🌺","🌻"];
+        const hearts = ["💖","💕","💗"];
+        for (let i = 0; i < 70; i++) {
+            document.write(
+                `<span class="flower" style="
+                left:${Math.random()*100}%;
+                animation-duration:${18 + Math.random()*20}s;
+                animation-delay:${Math.random()*-30}s;
+                font-size:${1.2 + Math.random()*1.8}rem;">
+                ${flowers[Math.floor(Math.random()*flowers.length)]}
+                </span>`
+            );
+        }
+        for (let i = 0; i < 25; i++) {
+            document.write(
+                `<span class="heart-bg" style="
+                left:${Math.random()*100}%;
+                animation-duration:${20 + Math.random()*25}s;
+                animation-delay:${Math.random()*-30}s;">
+                ${hearts[Math.floor(Math.random()*hearts.length)]}
+                </span>`
+            );
+        }
+    </script>
 </div>
 
 <div class="container">
 
     <!-- PANTALLA 1 -->
     <div class="card" id="page1">
-        <h1>¿Confías en mí?</h1>
+        <h1>¿Confías en mí? 💕</h1>
         <div class="buttons">
             <button id="yes">Sí</button>
             <button id="no" disabled>No</button>
@@ -143,20 +180,21 @@ button {
 
     <!-- PANTALLA 2 -->
     <div class="card hidden" id="page2">
-        <h1>Valentina 🌸</h1>
+        <h1>Valentina 🌷</h1>
         <p>
-            Me siento orgulloso de ti.<br><br>
+            Me siento profundamente orgulloso de ti.<br><br>
             ¿Sabes lo increíble que eres?<br>
             A pesar de que el trabajo es pesado,
-            lo has dado todo cada día.<br><br>
-            Tu esfuerzo, tu constancia y tu corazón
-            hacen que todo valga la pena.<br><br>
-            <strong>Estoy profundamente orgulloso de ti.</strong>
+            lo has dado todo con una fuerza admirable.<br><br>
+            Tu dedicación, tu corazón y tu esfuerzo
+            iluminan cada día.<br><br>
+            <strong>Estoy muy orgulloso de ti 
+	y siempre lo estare asi no estemos juntos.</strong>
         </p>
 
-        <div class="heart">💖</div>
+        <div class="heart-main">💖</div>
 
-        <p style="font-size:1.6em; color:#d63384;">
+        <p style="font-size:1.7em; color:#d63384;">
             Te amo
         </p>
     </div>
