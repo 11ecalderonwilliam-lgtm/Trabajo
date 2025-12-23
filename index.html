@@ -13,7 +13,6 @@ body {
     overflow: hidden;
 }
 
-/* FONDO TIERNO */
 .flower-bg {
     position: fixed;
     inset: 0;
@@ -21,7 +20,6 @@ body {
     pointer-events: none;
 }
 
-/* FLORES */
 .flower {
     position: absolute;
     font-size: 1.8rem;
@@ -29,7 +27,6 @@ body {
     animation: float linear infinite;
 }
 
-/* CORAZONES */
 .heart-bg {
     position: absolute;
     font-size: 1.4rem;
@@ -38,21 +35,13 @@ body {
 }
 
 @keyframes float {
-    from {
-        transform: translateY(110vh) rotate(0deg);
-    }
-    to {
-        transform: translateY(-15vh) rotate(360deg);
-    }
+    from { transform: translateY(110vh) rotate(0deg); }
+    to { transform: translateY(-15vh) rotate(360deg); }
 }
 
 @keyframes floatHeart {
-    from {
-        transform: translateY(110vh) scale(0.8);
-    }
-    to {
-        transform: translateY(-15vh) scale(1.2);
-    }
+    from { transform: translateY(110vh) scale(0.8); }
+    to { transform: translateY(-15vh) scale(1.2); }
 }
 
 .container {
@@ -89,6 +78,8 @@ p {
     display: flex;
     justify-content: center;
     gap: 30px;
+    position: relative;
+    height: 80px;
 }
 
 button {
@@ -113,7 +104,9 @@ button {
 #no {
     background: #ddd;
     color: #888;
-    cursor: not-allowed;
+    cursor: pointer;
+    position: absolute;
+    transition: 0.25s;
 }
 
 .hidden {
@@ -136,35 +129,33 @@ button {
 
 <body>
 
-<!-- MUCHAS FLORES Y CORAZONES -->
+<!-- FONDO DE FLORES -->
 <div class="flower-bg">
-    <!-- FLORES -->
-    <!-- Tulipanes, rosas, lirios, gypsophila, campánulas -->
-    <script>
-        const flowers = ["🌷","🌸","🌹","💐","🌼","🌺","🌻"];
-        const hearts = ["💖","💕","💗"];
-        for (let i = 0; i < 70; i++) {
-            document.write(
-                `<span class="flower" style="
-                left:${Math.random()*100}%;
-                animation-duration:${18 + Math.random()*20}s;
-                animation-delay:${Math.random()*-30}s;
-                font-size:${1.2 + Math.random()*1.8}rem;">
-                ${flowers[Math.floor(Math.random()*flowers.length)]}
-                </span>`
-            );
-        }
-        for (let i = 0; i < 25; i++) {
-            document.write(
-                `<span class="heart-bg" style="
-                left:${Math.random()*100}%;
-                animation-duration:${20 + Math.random()*25}s;
-                animation-delay:${Math.random()*-30}s;">
-                ${hearts[Math.floor(Math.random()*hearts.length)]}
-                </span>`
-            );
-        }
-    </script>
+<script>
+const flowers = ["🌷","🌸","🌹","💐","🌼","🌺","🌻"];
+const hearts = ["💖","💕","💗"];
+
+for (let i = 0; i < 80; i++) {
+    document.write(`
+    <span class="flower" style="
+    left:${Math.random()*100}%;
+    animation-duration:${18 + Math.random()*20}s;
+    animation-delay:${Math.random()*-30}s;
+    font-size:${1.2 + Math.random()*1.8}rem;">
+    ${flowers[Math.floor(Math.random()*flowers.length)]}
+    </span>`);
+}
+
+for (let i = 0; i < 30; i++) {
+    document.write(`
+    <span class="heart-bg" style="
+    left:${Math.random()*100}%;
+    animation-duration:${20 + Math.random()*25}s;
+    animation-delay:${Math.random()*-30}s;">
+    ${hearts[Math.floor(Math.random()*hearts.length)]}
+    </span>`);
+}
+</script>
 </div>
 
 <div class="container">
@@ -174,7 +165,7 @@ button {
         <h1>¿Confías en mí? 💕</h1>
         <div class="buttons">
             <button id="yes">Sí</button>
-            <button id="no" disabled>No</button>
+            <button id="no">No</button>
         </div>
     </div>
 
@@ -184,18 +175,17 @@ button {
         <p>
             Me siento profundamente orgulloso de ti.<br><br>
             ¿Sabes lo increíble que eres?<br>
-            A pesar de que el trabajo es pesado,
+            A pesar de que el trabajo es pesado y has tenido dolores y malos pensamientos,
             lo has dado todo con una fuerza admirable.<br><br>
-            Tu dedicación, tu corazón y tu esfuerzo
-            iluminan cada día.<br><br>
-            <strong>Estoy muy orgulloso de ti 
-	y siempre lo estare asi no estemos juntos.</strong>
+            Tu dedicación y tu corazón
+            iluminan cada día no solo el mio, sino el de muchas personas.<br><br>
+            <strong>Estoy muy orgulloso de ti y siempre lo estare asi no estemos juntos.</strong>
         </p>
 
         <div class="heart-main">💖</div>
 
         <p style="font-size:1.7em; color:#d63384;">
-            Te amo
+            Te amo y te amare toda una vida
         </p>
     </div>
 
@@ -203,6 +193,7 @@ button {
 
 <script>
 const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
 const page1 = document.getElementById("page1");
 const page2 = document.getElementById("page2");
 
@@ -210,6 +201,21 @@ yesBtn.addEventListener("click", () => {
     page1.classList.add("hidden");
     page2.classList.remove("hidden");
 });
+
+noBtn.addEventListener("mouseenter", moveNo);
+noBtn.addEventListener("click", moveNo);
+
+function moveNo() {
+    const container = document.querySelector(".card");
+    const maxX = container.offsetWidth - noBtn.offsetWidth;
+    const maxY = container.offsetHeight - noBtn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
+}
 </script>
 
 </body>
