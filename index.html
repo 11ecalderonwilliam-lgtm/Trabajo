@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Valentina 💖</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(180deg, #ffe6f0, #fff);
+        overflow: hidden;
+    }
+
+    .flowers {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            url("https://i.imgur.com/9QOQO4M.png"), /* tulipanes */
+            url("https://i.imgur.com/3l4ZKzU.png"), /* rosas */
+            url("https://i.imgur.com/nE4X5Zf.png"), /* lirios */
+            url("https://i.imgur.com/xrQm0vB.png"); /* gypsophila */
+        background-size: 200px;
+        background-repeat: repeat;
+        opacity: 0.25;
+        z-index: -1;
+        animation: moveFlowers 60s linear infinite;
+    }
+
+    @keyframes moveFlowers {
+        from { background-position: 0 0; }
+        to { background-position: 1000px 1000px; }
+    }
+
+    .container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.9);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        max-width: 600px;
+        width: 100%;
+    }
+
+    h1 {
+        color: #d63384;
+        font-size: 2.5em;
+    }
+
+    p {
+        font-size: 1.2em;
+        color: #555;
+    }
+
+    .buttons {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    button {
+        font-size: 1.2em;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #yes {
+        background: #ff69b4;
+        color: white;
+    }
+
+    #yes:hover {
+        background: #ff85c1;
+        transform: scale(1.1);
+    }
+
+    #no {
+        background: #ccc;
+        color: #666;
+        cursor: not-allowed;
+        position: relative;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .heart {
+        font-size: 3em;
+        animation: heartbeat 1.5s infinite;
+        color: #ff69b4;
+    }
+
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="flowers"></div>
+
+<div class="container">
+    <!-- PANTALLA 1 -->
+    <div class="card" id="page1">
+        <h1>¿Confías en mí?</h1>
+        <div class="buttons">
+            <button id="yes">Sí</button>
+            <button id="no">No</button>
+        </div>
+    </div>
+
+    <!-- PANTALLA 2 -->
+    <div class="card hidden" id="page2">
+        <h1>Valentina 🌸</h1>
+        <p>
+            Me siento orgulloso de ti.<br><br>
+            ¿Sabes lo increíble que eres?<br>
+            A pesar de que el trabajo es pesado,
+            lo has dado todo cada día.<br><br>
+            Tu esfuerzo, tu constancia y tu corazón
+            hacen que todo valga la pena.<br><br>
+            <strong>Estoy muy orgulloso de ti.</strong>
+        </p>
+        <div class="heart">💖</div>
+        <p style="font-size:1.5em; margin-top:20px;">
+            Te amo
+        </p>
+    </div>
+</div>
+
+<script>
+    const yesBtn = document.getElementById("yes");
+    const page1 = document.getElementById("page1");
+    const page2 = document.getElementById("page2");
+
+    yesBtn.addEventListener("click", () => {
+        page1.classList.add("hidden");
+        page2.classList.remove("hidden");
+    });
+</script>
+
+</body>
+</html>
