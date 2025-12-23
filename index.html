@@ -3,127 +3,141 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Valentina 💖</title>
+<title>Confía en mí 💖</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(180deg, #ffe6f0, #fff);
-        overflow: hidden;
-    }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(180deg, #ffe6f0, #fff);
+    overflow: hidden;
+}
 
-    .flowers {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        background-image: 
-            url("https://i.imgur.com/9QOQO4M.png"), /* tulipanes */
-            url("https://i.imgur.com/3l4ZKzU.png"), /* rosas */
-            url("https://i.imgur.com/nE4X5Zf.png"), /* lirios */
-            url("https://i.imgur.com/xrQm0vB.png"); /* gypsophila */
-        background-size: 200px;
-        background-repeat: repeat;
-        opacity: 0.25;
-        z-index: -1;
-        animation: moveFlowers 60s linear infinite;
-    }
+.flower-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
 
-    @keyframes moveFlowers {
-        from { background-position: 0 0; }
-        to { background-position: 1000px 1000px; }
-    }
+.flower {
+    position: absolute;
+    font-size: 2.2rem;
+    animation: float linear infinite;
+    opacity: 0.6;
+}
 
-    .container {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
+@keyframes float {
+    from {
+        transform: translateY(100vh) rotate(0deg);
     }
+    to {
+        transform: translateY(-10vh) rotate(360deg);
+    }
+}
 
-    .card {
-        background: rgba(255,255,255,0.9);
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        max-width: 600px;
-        width: 100%;
-    }
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
 
-    h1 {
-        color: #d63384;
-        font-size: 2.5em;
-    }
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    max-width: 600px;
+    width: 100%;
+}
 
-    p {
-        font-size: 1.2em;
-        color: #555;
-    }
+h1 {
+    color: #d63384;
+    font-size: 2.5em;
+}
 
-    .buttons {
-        margin-top: 30px;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-    }
+p {
+    font-size: 1.2em;
+    color: #555;
+    line-height: 1.6;
+}
 
-    button {
-        font-size: 1.2em;
-        padding: 12px 30px;
-        border: none;
-        border-radius: 30px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
 
-    #yes {
-        background: #ff69b4;
-        color: white;
-    }
+button {
+    font-size: 1.2em;
+    padding: 12px 35px;
+    border: none;
+    border-radius: 30px;
+}
 
-    #yes:hover {
-        background: #ff85c1;
-        transform: scale(1.1);
-    }
+#yes {
+    background: #ff69b4;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-    #no {
-        background: #ccc;
-        color: #666;
-        cursor: not-allowed;
-        position: relative;
-    }
+#yes:hover {
+    background: #ff85c1;
+    transform: scale(1.1);
+}
 
-    .hidden {
-        display: none;
-    }
+#no {
+    background: #ccc;
+    color: #777;
+    cursor: not-allowed;
+}
 
-    .heart {
-        font-size: 3em;
-        animation: heartbeat 1.5s infinite;
-        color: #ff69b4;
-    }
+.hidden {
+    display: none;
+}
 
-    @keyframes heartbeat {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-    }
+.heart {
+    font-size: 3em;
+    animation: heartbeat 1.5s infinite;
+    margin: 15px 0;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
 </style>
 </head>
 
 <body>
 
-<div class="flowers"></div>
+<!-- FONDO DE FLORES -->
+<div class="flower-bg">
+    <span class="flower" style="left:5%; animation-duration:20s">🌷</span>
+    <span class="flower" style="left:15%; animation-duration:26s">🌸</span>
+    <span class="flower" style="left:25%; animation-duration:22s">🌹</span>
+    <span class="flower" style="left:35%; animation-duration:28s">💐</span>
+    <span class="flower" style="left:45%; animation-duration:24s">🌼</span>
+    <span class="flower" style="left:55%; animation-duration:30s">🌷</span>
+    <span class="flower" style="left:65%; animation-duration:23s">🌸</span>
+    <span class="flower" style="left:75%; animation-duration:27s">🌹</span>
+    <span class="flower" style="left:85%; animation-duration:21s">💐</span>
+</div>
 
 <div class="container">
+
     <!-- PANTALLA 1 -->
     <div class="card" id="page1">
         <h1>¿Confías en mí?</h1>
         <div class="buttons">
             <button id="yes">Sí</button>
-            <button id="no">No</button>
+            <button id="no" disabled>No</button>
         </div>
     </div>
 
@@ -137,24 +151,27 @@
             lo has dado todo cada día.<br><br>
             Tu esfuerzo, tu constancia y tu corazón
             hacen que todo valga la pena.<br><br>
-            <strong>Estoy muy orgulloso de ti.</strong>
+            <strong>Estoy profundamente orgulloso de ti.</strong>
         </p>
+
         <div class="heart">💖</div>
-        <p style="font-size:1.5em; margin-top:20px;">
+
+        <p style="font-size:1.6em; color:#d63384;">
             Te amo
         </p>
     </div>
+
 </div>
 
 <script>
-    const yesBtn = document.getElementById("yes");
-    const page1 = document.getElementById("page1");
-    const page2 = document.getElementById("page2");
+const yesBtn = document.getElementById("yes");
+const page1 = document.getElementById("page1");
+const page2 = document.getElementById("page2");
 
-    yesBtn.addEventListener("click", () => {
-        page1.classList.add("hidden");
-        page2.classList.remove("hidden");
-    });
+yesBtn.addEventListener("click", () => {
+    page1.classList.add("hidden");
+    page2.classList.remove("hidden");
+});
 </script>
 
 </body>
